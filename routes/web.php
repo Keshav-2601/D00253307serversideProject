@@ -20,3 +20,4 @@ Route::get('/products',[ProductController::class,'index'])->name('Product.index'
 Route::get('/products/addnewblog',[ProductController::class,'Newblog'])->name('Product.Addnewblog');
 Route::post('/products',[ProductController::class,'store'])->name('Product.store');
 Route::get('/products/updateblog',[ProductController::class,'update'])->name('Product.update');
+Route::get('/products/updateuser',[ProductController::class,updateUser])->name('product.updateuser');
