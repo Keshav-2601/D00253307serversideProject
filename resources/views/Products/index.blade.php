@@ -35,6 +35,7 @@
         <a href="#checklists">4. Checklists</a>
         <a href="#news">5. Industry news</a>
         <a href='products/addnewblog'>Add a New Blog</a>
+        <a href='login'>Sign up page</a>
     </div>
     <h1>Content Types to Change Up Your Blogging</h1>
     

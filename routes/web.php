@@ -1,7 +1,8 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProductController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,8 +17,15 @@ use App\Http\Controllers\ProductController;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/products',[ProductController::class,'index'])->name('Product.index');
-Route::get('/products/addnewblog',[ProductController::class,'Newblog'])->name('Product.Addnewblog');
-Route::post('/products',[ProductController::class,'store'])->name('Product.store');
-Route::get('/products/updateblog',[ProductController::class,'update'])->name('Product.update');
-Route::get('/products/updateuser',[ProductController::class,updateUser])->name('product.updateuser');
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+require __DIR__.'/auth.php';
